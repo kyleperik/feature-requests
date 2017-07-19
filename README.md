@@ -1,5 +1,7 @@
 # Feature Requests
 
+[ ![Codeship Status for kyleperik/feature-requests](https://app.codeship.com/projects/c9223550-4efa-0135-7042-16b8375812a9/status?branch=master)](https://app.codeship.com/projects/233879)
+
 Project for recording clients' feature requests for other software
 
 ## Technology Stack
