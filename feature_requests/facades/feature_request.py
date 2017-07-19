@@ -1,4 +1,5 @@
-
+from feature_requests import data
+import feature_requests.data.feature_request
 
 def get():
-    return ['feature one', 'feature two']
+    return data.feature_request.get_all()
