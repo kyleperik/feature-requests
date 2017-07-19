@@ -27,11 +27,18 @@ Configuring is fairly easy, first create `config.py` in the project root.
 
 ```ini
 SECRET_KEY=<key here>
+SQLALCHEMY_DATABASE_URI=<database connection string>
 ```
 
 Then create a environment variable `FEAT_REQS_SETTINGS` with the path to your configuration file:
 
 `~/path/to/project/config.py`
+
+### Database
+
+You also must setup the database. To do this, assuming mysql is installed, create a mysql database then run each one of the scripts located in `schemas/`.
+
+### Run
 
 Finally, run `python start.py` in the project root, and you should be good to go.
 
