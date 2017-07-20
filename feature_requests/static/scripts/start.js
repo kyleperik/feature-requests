@@ -5,11 +5,12 @@ vue_utils.push_component('app', {
         }
     },
     created: function () {
+        setTimeout(() => 
         fetch($SCRIPT_ROOT + 'feature_request')
         .then(r => r.json())
         .then(r => {
             this.feature_requests = r;
-        })
+        }), 2000);
     }
 });
 

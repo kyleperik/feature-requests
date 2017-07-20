@@ -1,7 +1,7 @@
-<div>
+<div class="feature-request" :class="{ 'deadline-soon': deadline_soon }">
     <b>{{ feature_request.title }}</b>
-    <span>{{ feature_request.description }}</span>
-    <div>
-        <i>{{ target_date_formatted }}</i>
+    <div>{{ feature_request.description }}</div>
+    <div class="date">
+        {{ target_date_formatted }}
     </div>
 </div>
