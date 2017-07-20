@@ -8,7 +8,12 @@
         <script>
          $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
         </script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.1/vue.min.js"></script>
+
+        {% if debug %}
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.1/vue.js"></script>
+        {% else %}
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.1/vue.min.js"></script>
+        {% endif %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
         <script src="https://unpkg.com/es5-shim@4.5.9"></script>
         <script src="https://unpkg.com/es6-shim@0.35.3"></script>

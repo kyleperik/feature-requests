@@ -23,7 +23,10 @@ app.config.from_envvar('FEAT_REQS_SETTINGS')
 app.register_blueprint(home)
 app.register_blueprint(feature_request, url_prefix='/feature_request')
 
-SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+# Pass through any config settings/global stuff for all templates
+@app.context_processor
+def inject_global():
+    return dict(debug = app.debug)
 
 # Initialize Database
 db.init_app(app)
