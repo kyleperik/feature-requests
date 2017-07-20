@@ -19,4 +19,6 @@ function start() {
     });
 }
 
-vue_utils.register_components(start);
+window.addEventListener('load', function () {
+    vue_utils.register_components(start);
+})
