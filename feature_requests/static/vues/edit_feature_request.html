@@ -1,0 +1,17 @@
+<div class="edit">
+    <div class="form">
+        <input type="text" v-model="title" class="title" placeholder="What is the Feature?" />
+        <textarea v-model="description" @input="textarea_change"
+                  class="description" placeholder="Describe the Feature">
+        </textarea>
+        <div class="target_date">
+            <label>Target Date</label>
+            <flat-pickr v-model="target_date" :required="true" />
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button @click="$emit('cancel')">Cancel</button>
+        <button>Save</button>
+    </div>
+</div>

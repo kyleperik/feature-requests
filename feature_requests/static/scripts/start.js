@@ -1,20 +1,27 @@
 vue_utils.push_component('app', {
     data: function () {
         return {
-            feature_requests: null 
+            feature_requests: null,
+            edit_mode: false
+        }
+    },
+    methods: {
+        add: function () {
+            this.edit_mode = true;
         }
     },
     created: function () {
-        setTimeout(() => 
         fetch($SCRIPT_ROOT + 'feature_request')
         .then(r => r.json())
         .then(r => {
             this.feature_requests = r;
-        }), 2000);
+        });
     }
 });
 
 function start() {
+    Vue.component('flat-pickr', VueFlatpickr.default);
+    
     new Vue({
         el: '#Root'
     });

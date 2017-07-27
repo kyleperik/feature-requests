@@ -3,6 +3,26 @@ body {
     margin: 0;
 }
 
+button {
+    border: none;
+    background-color: #FF5722;
+    color: white;
+    padding: 5px 20px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px grey;
+    transition: background 200ms;
+}
+
+button:hover {
+    background-color: #ff9c7e;
+}
+
+button:active {
+    background-color: #ff3d00;
+}
+
 .placeholder {
     color: grey;
     font-size: 30px;
@@ -59,6 +79,41 @@ body {
     box-shadow: 0 2px 2px #b9b9b9;
 }
 
+#Content .add {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #009988;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px;
+    box-shadow: 0 1px 2px #616161;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    transition: background 200ms, opacity 0.5s;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+#Content .add:hover {
+    background-color: #48c7ba;
+}
+
+#Content .add:active {
+    background-color: #FF5722;
+}
+
 .feature-request {
     padding: 10px;
     display: flex;
@@ -66,6 +121,7 @@ body {
     background-color: white;
 }
 
+/* Show dashed line before each feature request except the first */
 .feature-request+.feature-request {
     border-top: 1px dashed #dadada;
 }
@@ -81,4 +137,65 @@ body {
 
 .feature-request.deadline-soon .date {
     color: red;
+}
+
+#Content .inner.edit {
+    padding: 10px;
+    background-color: white;
+}
+
+.edit .form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #c5c5c5;
+}
+
+.edit input,
+.edit textarea {
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 3px;
+    outline-color: #009988;
+}
+
+.edit .title {
+    font-size: 20px;
+}
+
+.edit .title,
+.edit .description {
+    border-bottom: 1px dashed #e4e4e4;
+}
+
+.edit .target_date {
+    display: flex;
+    border-color: inherit;
+}
+
+.edit .target_date input,
+.edit .target_date label {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.edit .target_date label {
+    padding: 2px 10px;
+    text-align: right;
+}
+
+.edit .target_date input {
+    padding: 2px 10px;
+    border-left: 1px solid;
+    border-color: inherit;
+}
+
+.edit textarea {
+    resize: none;
+}
+
+.edit .buttons {
+    display: flex;
+    justify-content: space-between;
 }
