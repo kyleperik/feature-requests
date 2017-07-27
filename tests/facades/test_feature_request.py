@@ -1,4 +1,6 @@
 import feature_requests.facades.feature_request as facade
+from feature_requests import domain
+import feature_requests.domain.models
 from mock import Mock, patch, call
 
 @patch('feature_requests.facades.feature_request.data')
@@ -18,3 +20,21 @@ def test_get(data):
 
     result_feature = result[1]
     assert result_feature == 'two'
+
+@patch('feature_requests.facades.feature_request.data')
+def test_add(data):
+    #-arrange-
+    data.feature_request = Mock()
+    data.feature_request.add = Mock(side_effect=[5])
+
+    feature_request = domain.models.FeatureRequest(
+        title = 'A great Feature Request'
+    )
+    
+    #-act-
+    result = facade.add(feature_request)
+    
+    #-assert-
+    assert result == 5
+
+    data.feature_request.add.assert_called_with(feature_request)

@@ -1,8 +1,16 @@
 class FeatureRequest:
+    id = None
     title = ''
     description = ''
     target_date = None
 
+    def __init__(self, id=None, title='',
+                 description='', target_date=None):
+        self.id = id
+        self.title = title
+        self.description = description
+        self.target_date = target_date
+    
     @classmethod
     def create(cls, feature_request):
         result = cls()
