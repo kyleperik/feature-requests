@@ -5,7 +5,7 @@
         </div>
     </div>
     <div id="Content">
-        <edit_feature_request v-if="edit_mode" class="inner" @cancel="edit_mode = false" />
+        <edit_feature_request v-if="edit_mode" class="inner" @close="close_edit" />
         <div class="inner" v-else-if="feature_requests">
             <feature_request :key="feature_request.id"
                              v-for="feature_request in feature_requests"

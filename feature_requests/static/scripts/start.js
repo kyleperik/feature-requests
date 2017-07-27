@@ -8,14 +8,21 @@ vue_utils.push_component('app', {
     methods: {
         add: function () {
             this.edit_mode = true;
+        },
+        close_edit: function () {
+            this.edit_mode = false;
+            this.load();
+        },
+        load: function () {
+            fetch($SCRIPT_ROOT + 'feature_request')
+            .then(r => r.json())
+            .then(r => {
+                this.feature_requests = r;
+            });
         }
     },
     created: function () {
-        fetch($SCRIPT_ROOT + 'feature_request')
-        .then(r => r.json())
-        .then(r => {
-            this.feature_requests = r;
-        });
+        this.load();
     }
 });
 
