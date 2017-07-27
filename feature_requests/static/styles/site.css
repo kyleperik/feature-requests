@@ -145,7 +145,7 @@ button:active {
 }
 
 .edit .form {
-    margin: 10px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     border: 1px solid #c5c5c5;
