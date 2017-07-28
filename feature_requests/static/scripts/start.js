@@ -14,7 +14,7 @@ vue_utils.push_component('app', {
             this.load();
         },
         load: function () {
-            fetch($SCRIPT_ROOT + 'feature_request')
+            fetch($SCRIPT_ROOT + 'feature_request/')
             .then(r => r.json())
             .then(r => {
                 this.feature_requests = r;
