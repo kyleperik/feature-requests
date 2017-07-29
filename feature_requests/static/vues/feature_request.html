@@ -1,5 +1,16 @@
 <div class="feature-request" :class="{ 'deadline-soon': deadline_soon }">
-    <b>{{ feature_request.title }}</b>
+    <div class="titlerow">
+        <div class="title">{{ feature_request.title }}</div>
+        <div class="options" @click="show_options = true"
+                             @mouseleave="show_options = false">
+            <svgimg url="entypo/dots-three-vertical.svg" />
+            <transition name="fade">
+                <div class="list" v-if="show_options">
+                    <div class="item" @click="$emit('edit')">Edit</div>
+                </div>
+            </transition>
+        </div>
+    </div>
     <div>{{ feature_request.description }}</div>
     <div class="date">
         {{ target_date_formatted }}

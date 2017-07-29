@@ -1,5 +1,10 @@
 vue_utils.push_component('feature_request', {
     props: ['feature_request'],
+    data: function () {
+        return {
+            show_options: false
+        };
+    },
     computed: {
         moment_target_date: function () {
             return moment(this.feature_request.target_date)

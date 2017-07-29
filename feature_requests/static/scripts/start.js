@@ -2,15 +2,21 @@ vue_utils.push_component('app', {
     data: function () {
         return {
             feature_requests: null,
-            edit_mode: false
+            edit_mode: false,
+            editing: null
         }
     },
     methods: {
         add: function () {
             this.edit_mode = true;
         },
+        edit: function (editing) {
+            this.edit_mode = true;
+            this.editing = editing;
+        },
         close_edit: function () {
             this.edit_mode = false;
+            this.editing = null;
             this.load();
         },
         load: function () {
