@@ -8,6 +8,13 @@ def get_all():
         domain.models.FeatureRequest.create(feature)
     for feature in features]
 
+def get(id):
+    feature = (db.session.query(FeatureRequest)
+               .filter(FeatureRequest.id == id)
+               .first())
+    if feature is None: return None
+    return domain.models.FeatureRequest.create(feature)
+
 def add(feature):
     new_feature = FeatureRequest.create(feature)
     db.session.add(new_feature)

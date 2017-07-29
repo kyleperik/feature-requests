@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, abort
 from feature_requests import facades
 from feature_requests import domain
 import feature_requests.domain.models
@@ -7,10 +7,18 @@ import feature_requests.facades.feature_request
 feature_request = Blueprint('feature_request', __name__)
 
 @feature_request.route('/', methods=['GET'])
-def GET():
+def GET_ALL():
     return jsonify([
         feature.serialize()
     for feature in facades.feature_request.get()])
+
+@feature_request.route('/<int:id>', methods=['GET'])
+def GET(id):
+    result = facades.feature_request.get(id)
+    if result is None: abort(404)
+    return jsonify(
+        result.serialize()
+    )
 
 @feature_request.route('/', methods=['POST'])
 def POST():

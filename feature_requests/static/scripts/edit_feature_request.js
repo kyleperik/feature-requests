@@ -1,7 +1,15 @@
 vue_utils.push_component('edit_feature_request', {
     props: ['existing_id'],
     beforeMount: function () {
-        throw new Error("Not Implemented!")
+        if (this.existing_id) {
+            fetch($SCRIPT_ROOT + 'feature_request/' + this.existing_id)
+            .then(r => r.json())
+            .then(r => {
+                this.title = r.title;
+                this.description = r.description;
+                this.target_date = r.target_date;
+            });
+        }
     },
     data: function () {
         return {
@@ -23,7 +31,6 @@ vue_utils.push_component('edit_feature_request', {
         },
         save_new: function () {
             fetch($SCRIPT_ROOT + 'feature_request/', {
-                credentials: 'include',
                 method: 'POST',
                 body: JSON.stringify({
                     title: this.title,
