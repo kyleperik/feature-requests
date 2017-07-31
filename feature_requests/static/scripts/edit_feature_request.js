@@ -24,10 +24,23 @@ vue_utils.push_component('edit_feature_request', {
         },
         save: function () {
             if (this.existing_id) {
-                throw new Error('Not Implemented!')
+                this.save_update();
             } else {
                 this.save_new();
             }
+        },
+        save_update: function () {
+            fetch($SCRIPT_ROOT + 'feature_request/' + this.existing_id, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    title: this.title,
+                    description: this.description,
+                    target_date: this.target_date
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => this.$emit('close'))
         },
         save_new: function () {
             fetch($SCRIPT_ROOT + 'feature_request/', {

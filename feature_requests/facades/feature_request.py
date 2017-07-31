@@ -8,3 +8,6 @@ def get(id=None):
 
 def add(f):
     return data.feature_request.add(f)
+
+def update(id, f):
+    return data.feature_request.update(id, f)

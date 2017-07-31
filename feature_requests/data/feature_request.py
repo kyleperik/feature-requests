@@ -22,3 +22,12 @@ def add(feature):
     id = new_feature.id
     db.session.commit()
     return id
+
+def update(id, f):
+    feature = (db.session.query(FeatureRequest)
+               .filter(FeatureRequest.id == id)
+               .first())
+    feature.title = f.title
+    feature.description = f.description
+    feature.target_date = f.target_date
+    return db.session.commit()

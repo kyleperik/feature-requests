@@ -52,3 +52,22 @@ def test_add(data):
     assert result == 5
 
     data.feature_request.add.assert_called_with(feature_request)
+
+@patch('feature_requests.facades.feature_request.data')
+def test_update(data):
+    #-arrange-
+    data.feature_request = Mock()
+    data.feature_request.update = Mock(side_effect=[True])
+
+    id = 3
+    feature_request = domain.models.FeatureRequest(
+        title = 'A great Feature Request'
+    )
+    
+    #-act-
+    result = facade.update(id, feature_request)
+    
+    #-assert-
+    assert result
+
+    data.feature_request.update.assert_called_with(id, feature_request)

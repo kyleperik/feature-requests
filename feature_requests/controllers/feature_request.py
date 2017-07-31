@@ -23,7 +23,7 @@ def GET(id):
 @feature_request.route('/', methods=['POST'])
 def POST():
     f = request.get_json()
-    return jsonify([
+    return jsonify(
         facades.feature_request.add(
             domain.models.FeatureRequest(
                 title = f['title'],
@@ -31,4 +31,19 @@ def POST():
                 target_date = f['target_date']
             )
         )
-    ])
+    )
+
+@feature_request.route('/<int:id>', methods=['PATCH'])
+def PATCH(id):
+    f = request.get_json()
+    return jsonify(
+        facades.feature_request.update(
+            id,
+            domain.models.FeatureRequest(
+                title = f['title'],
+                description = f['description'],
+                target_date = f['target_date']
+            )
+        )
+    )
+
