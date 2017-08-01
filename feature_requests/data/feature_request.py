@@ -31,3 +31,10 @@ def update(id, f):
     feature.description = f.description
     feature.target_date = f.target_date
     return db.session.commit()
+
+def delete(id):
+    feature = (db.session.query(FeatureRequest)
+               .filter(FeatureRequest.id == id)
+               .first())
+    db.session.delete(feature)
+    return db.session.commit()

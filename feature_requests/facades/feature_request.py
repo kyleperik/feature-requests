@@ -11,3 +11,6 @@ def add(f):
 
 def update(id, f):
     return data.feature_request.update(id, f)
+
+def delete(id):
+    return data.feature_request.delete(id)

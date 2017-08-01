@@ -47,3 +47,7 @@ def PATCH(id):
         )
     )
 
+@feature_request.route('/<int:id>', methods=['DELETE'])
+def DELETE(id):
+    f = request.get_json()
+    return jsonify(facades.feature_request.delete(id))

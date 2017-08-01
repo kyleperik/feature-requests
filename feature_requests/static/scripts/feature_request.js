@@ -2,9 +2,18 @@ vue_utils.push_component('feature_request', {
     props: ['feature_request'],
     data: function () {
         return {
-            show_options: false,
-            options_timeout: null
+            show_options: false
         };
+    },
+    methods: {
+        remove: function () {
+            fetch($SCRIPT_ROOT + '/feature_request/' + this.feature_request.id,
+            {
+                method: ['DELETE']
+            })
+            .then(() => this.$emit('reload'))
+            this.show_options = false;
+        }
     },
     computed: {
         moment_target_date: function () {

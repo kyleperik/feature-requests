@@ -71,3 +71,19 @@ def test_update(data):
     assert result
 
     data.feature_request.update.assert_called_with(id, feature_request)
+
+@patch('feature_requests.facades.feature_request.data')
+def test_delete(data):
+    #-arrange-
+    data.feature_request = Mock()
+    data.feature_request.update = Mock(side_effect=[True])
+    
+    id = 3
+    
+    #-act-
+    result = facade.delete(id)
+    
+    #-assert-
+    assert result
+    
+    data.feature_request.delete.assert_called_with(id)
