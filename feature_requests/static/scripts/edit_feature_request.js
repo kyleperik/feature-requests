@@ -8,6 +8,7 @@ vue_utils.push_component('edit_feature_request', {
                 this.title = r.title;
                 this.description = r.description;
                 this.target_date = r.target_date;
+                Vue.nextTick(() => autosize(this.$el.querySelector('textarea')));
             });
         }
     },

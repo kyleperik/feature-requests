@@ -2,7 +2,8 @@ vue_utils.push_component('feature_request', {
     props: ['feature_request'],
     data: function () {
         return {
-            show_options: false
+            show_options: false,
+            options_timeout: null
         };
     },
     computed: {
