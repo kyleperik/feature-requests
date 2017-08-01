@@ -7,11 +7,15 @@ vue_utils.push_component('feature_request', {
     },
     methods: {
         remove: function () {
+            if (!confirm('Are you sure you want to delete this feature request?')) {
+                this.show_options = false;
+                return;
+            }
             fetch($SCRIPT_ROOT + '/feature_request/' + this.feature_request.id,
             {
                 method: ['DELETE']
             })
-            .then(() => this.$emit('reload'))
+            .then(() => this.$emit('reload'));
             this.show_options = false;
         }
     },
