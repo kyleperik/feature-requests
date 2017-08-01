@@ -168,7 +168,8 @@ button:active {
 }
 
 .feature-request .options .list .item:hover {
-    background-color: rgba(230, 230, 230, 0.5);
+    background-color: #FF5722;
+    color: white;
 }
 
 .feature-request .date {
