@@ -9,12 +9,15 @@ class FeatureRequest(db.Model):
     title = db.Column(db.String(500))
     description = db.Column(db.String(5000))
     target_date = db.Column(db.DateTime)
-    
-    def __init__(self, id=None, title='', description='', target_date=None):
+    client_id = db.Column(db.Integer, db.ForeignKey('client.id'))
+
+    def __init__(self, id=None, title='', description='', target_date=None,
+                 client_id=None):
         self.id = id
         self.title = title
         self.description = description
         self.target_date = target_date
+        self.client_id = client_id
 
     @classmethod
     def create(cls, feature):
@@ -22,5 +25,25 @@ class FeatureRequest(db.Model):
             id = feature.id,
             title = feature.title,
             description = feature.description,
-            target_date = feature.target_date
+            target_date = feature.target_date,
+            client_id = client_id
+        )
+
+class Client(db.Model):
+    __tablename__ = 'client'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(500))
+    priority = db.Column(db.Integer)
+
+    def __init__(self, id=None, name='', priority=None):
+        self.id = id
+        self.name = name
+        self.priority = priority
+
+    @classmethod
+    def create(cls, client):
+        return cls(
+            id = client.id,
+            name = client.name,
+            priority = client.priority
         )

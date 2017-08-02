@@ -4,4 +4,3 @@ CREATE TABLE client (
     priority int NOT NULL,
     primary key (id)
 );
-    
