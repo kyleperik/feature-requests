@@ -26,7 +26,7 @@ class FeatureRequest(db.Model):
             title = feature.title,
             description = feature.description,
             target_date = feature.target_date,
-            client_id = client_id
+            client_id = feature.client_id
         )
 
 class Client(db.Model):
