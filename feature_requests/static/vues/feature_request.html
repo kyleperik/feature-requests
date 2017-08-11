@@ -1,8 +1,8 @@
 <div class="feature-request" :class="{ 'deadline-soon': deadline_soon }">
     <div class="titlerow">
         <div class="title">{{ feature_request.title }}</div>
-        <div class="options" @mouseleave="show_options = false">
-            <div @click="show_options = !show_options"><svgimg url="entypo/dots-three-vertical.svg" /></div>
+        <div class="options" :style="{display: show_options ? 'block' : null}" @mouseleave="mouseoffOptions" @mouseover="mouseonOptions">
+            <div @click="toggle_show_options"><svgimg url="entypo/dots-three-vertical.svg" /></div>
             <transition name="fade">
                 <div class="list" v-if="show_options">
                     <div class="item" @click="$emit('edit')">Edit</div>

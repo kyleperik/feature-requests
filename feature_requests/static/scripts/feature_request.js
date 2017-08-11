@@ -2,7 +2,8 @@ vue_utils.push_component('feature_request', {
     props: ['feature_request', 'client'],
     data: function () {
         return {
-            show_options: false
+            show_options: false,
+            optionsTimeout: null
         };
     },
     methods: {
@@ -17,6 +18,17 @@ vue_utils.push_component('feature_request', {
             })
             .then(() => this.$emit('reload'));
             this.show_options = false;
+        },
+        toggle_show_options: function () {
+            clearTimeout(this.optionsTimeout);
+            this.show_options = !this.show_options;
+        },
+        mouseonOptions: function () {
+            clearTimeout(this.optionsTimeout);
+        },
+        mouseoffOptions: function () {
+            clearTimeout(this.optionsTimeout);
+            this.optionsTimeout = setTimeout(() => this.show_options = false, 300);
         }
     },
     computed: {
