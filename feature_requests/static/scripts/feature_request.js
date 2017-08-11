@@ -1,5 +1,5 @@
 vue_utils.push_component('feature_request', {
-    props: ['feature_request'],
+    props: ['feature_request', 'client'],
     data: function () {
         return {
             show_options: false
@@ -28,6 +28,9 @@ vue_utils.push_component('feature_request', {
         },
         deadline_soon: function () {
             return this.moment_target_date.diff(moment(), 'days') < 10;
+        },
+        client_color: function () {
+            return colorHash.hex(this.client);
         }
     }
 });

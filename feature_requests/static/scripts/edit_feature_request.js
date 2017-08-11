@@ -1,5 +1,5 @@
 vue_utils.push_component('edit_feature_request', {
-    props: ['existing_id'],
+    props: ['existing_id', 'clients'],
     beforeMount: function () {
         if (this.existing_id) {
             fetch($SCRIPT_ROOT + 'feature_request/' + this.existing_id)
@@ -8,6 +8,7 @@ vue_utils.push_component('edit_feature_request', {
                 this.title = r.title;
                 this.description = r.description;
                 this.target_date = r.target_date;
+                this.client_id = r.client_id;
                 Vue.nextTick(() => autosize(this.$el.querySelector('textarea')));
             });
         }
@@ -17,13 +18,22 @@ vue_utils.push_component('edit_feature_request', {
             title: '',
             description: '',
             target_date: moment().format('YYYY-MM-DD'),
+            client_id: '',
         };
+    },
+    computed: {
+        isValid: function () {
+            return this.client_id;
+        }
     },
     methods: {
         textarea_change: function (e) {
             autosize(e.target);
         },
         save: function () {
+            if (!this.isValid) {
+                return;
+            }
             if (this.existing_id) {
                 this.save_update();
             } else {
@@ -36,7 +46,8 @@ vue_utils.push_component('edit_feature_request', {
                 body: JSON.stringify({
                     title: this.title,
                     description: this.description,
-                    target_date: this.target_date
+                    target_date: this.target_date,
+                    client_id: this.client_id
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -49,7 +60,8 @@ vue_utils.push_component('edit_feature_request', {
                 body: JSON.stringify({
                     title: this.title,
                     description: this.description,
-                    target_date: this.target_date
+                    target_date: this.target_date,
+                    client_id: this.client_id
                 }),
                 headers: {
                     'Content-Type': 'application/json'

@@ -5,13 +5,17 @@
         </div>
     </div>
     <div id="Content">
-        <edit_feature_request v-if="edit_mode" :existing_id="editing" class="inner" @close="close_edit" />
+        <edit_feature_request v-if="edit_mode" class="inner" :clients="clients"
+                              :existing_id="editing" @close="close_edit" />
+        <div v-else-if="feature_requests && !feature_requests.length" class="placeholder">
+            No Entries.
+        </div>
         <div class="inner" v-else-if="feature_requests">
             <feature_request :key="feature_request.id"
                              v-for="feature_request in feature_requests"
                              :feature_request="feature_request"
-                             @edit="edit(feature_request.id)"
-                             @reload="load" />
+                             :client="client(feature_request.client_id)"
+                             @edit="edit(feature_request.id)" @reload="load" />
         </div>
         <div v-else class="placeholder">Loading&hellip;</div>
         <transition name="fade">

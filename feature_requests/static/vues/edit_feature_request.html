@@ -8,6 +8,15 @@
             <label>Target Date</label>
             <flat-pickr v-model="target_date" :required="true" />
         </div>
+        <div class="client">
+            <label>Client</label>
+            <select v-model="client_id">
+                <option value="" disabled>Select a client</option>
+                <option v-for="client in clients" :value="client.id">
+                    {{ client.priority }}. {{ client.name }}
+                </option>
+            </select>
+        </div>
     </div>
 
     <div class="buttons">

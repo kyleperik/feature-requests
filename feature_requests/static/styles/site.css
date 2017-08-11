@@ -113,10 +113,13 @@ button:active {
 }
 
 .feature-request {
-    padding: 10px;
     display: flex;
     flex-direction: column;
     background-color: white;
+}
+
+.feature-request > * {
+    margin: 3px 10px;
 }
 
 /* Show dashed line before each feature request except the first */
@@ -131,6 +134,14 @@ button:active {
 .feature-request .titlerow {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+}
+
+.feature-request .bottomrow {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .feature-request .title {
@@ -172,9 +183,17 @@ button:active {
     color: white;
 }
 
+.feature-request .client_name {
+    background-color: #FF5722;
+    color: white;
+    padding: 1px 7px;
+    margin: 0 5px;
+    border-radius: 10px;
+}
+
 .feature-request .date {
     color: grey;
-    align-self: flex-end;
+    font-style: italic;
 }
 
 .feature-request.deadline-soon .date {
@@ -206,31 +225,43 @@ button:active {
     font-size: 20px;
 }
 
-.edit .title,
-.edit .description {
-    border-bottom: 1px dashed #e4e4e4;
-}
-
-.edit .target_date {
+.edit .target_date,
+.edit .client {
     display: flex;
     border-color: inherit;
 }
 
+.edit .title,
+.edit .description,
+.edit .target_date {
+    border-bottom: 1px dashed #e4e4e4;
+}
+
 .edit .target_date input,
-.edit .target_date label {
+.edit .target_date label,
+.edit .client select,
+.edit .client label {
     flex-grow: 1;
+    flex-shrink: 0;
     flex-basis: 0;
 }
 
-.edit .target_date label {
+.edit .target_date label,
+.edit .client label {
     padding: 2px 10px;
     text-align: right;
 }
 
-.edit .target_date input {
+.edit .client select {
+    border: none;
+    background-color: white;
+    outline: none;
+}
+
+.edit .target_date input,
+.edit .client select {
     padding: 2px 10px;
-    border-left: 1px solid;
-    border-color: inherit;
+    border-left: 1px dashed #e4e4e4;
 }
 
 .edit textarea {

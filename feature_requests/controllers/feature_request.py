@@ -28,7 +28,8 @@ def POST():
             domain.models.FeatureRequest(
                 title = f['title'],
                 description = f['description'],
-                target_date = f['target_date']
+                target_date = f['target_date'],
+                client_id = f['client_id']
             )
         )
     )
@@ -36,13 +37,15 @@ def POST():
 @feature_request.route('/<int:id>', methods=['PATCH'])
 def PATCH(id):
     f = request.get_json()
+    #import pdb; pdb.set_trace()
     return jsonify(
         facades.feature_request.update(
             id,
             domain.models.FeatureRequest(
                 title = f['title'],
                 description = f['description'],
-                target_date = f['target_date']
+                target_date = f['target_date'],
+                client_id = f['client_id']
             )
         )
     )
