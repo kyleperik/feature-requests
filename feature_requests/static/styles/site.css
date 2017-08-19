@@ -58,10 +58,28 @@ button:active {
 #Header .inner {
     display: flex;
     margin: 0 auto;
+    align-items: center;
 }
 
 #Header .title {
     margin: 10px 5px;
+}
+
+#Header .right {
+    margin-left: auto;
+    padding: 15px;
+}
+
+#Header .settings {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    cursor: pointer;
+    transition: fill 100ms;
+}
+
+#Header .settings:active {
+    fill: #bfbfbf;
 }
 
 #Content {
@@ -271,4 +289,68 @@ button:active {
 .edit .buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.inner.settings {
+    background-color: white;
+}
+
+.inner.settings .title {
+    font-weight: bold;
+}
+
+.inner.settings .clients {
+    margin: 10px;
+}
+
+.inner.settings .clientList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inner.settings .client {
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 1px 2px grey;
+}
+
+.inner.settings .client .handle {
+    display: flex;
+    align-items: center;
+    cursor: move;
+}
+
+.inner.settings .client .handle svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
+.inner.settings .client .priority {
+    margin: 0 5px;
+}
+
+.inner.settings .client .name {
+    border: none;
+    padding: 2px 4px;
+    background: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    outline-color: rgba(255, 255, 255, 0.4);
+    transition: border 250ms;
+}
+
+.inner.settings .client .name:focus {
+    border-color: white;
+}
+
+.inner.settings .footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
 }

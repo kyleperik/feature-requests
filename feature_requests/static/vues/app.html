@@ -2,10 +2,16 @@
     <div id="Header">
         <div class="inner">
             <h1 class="title">Feature Requests</h1>
+            <div class="right">
+                <span v-if="!settings && !edit_mode" @click="settings = true">
+                    <svgimg class="settings" url="entypo/cog.svg" />
+                </span>
+            </div>
         </div>
     </div>
     <div id="Content">
-        <edit_feature_request v-if="edit_mode" class="inner" :clients="clients"
+        <settings :initialClients="clients" @close="settings = false" v-if="settings" />
+        <edit_feature_request v-else-if="edit_mode" class="inner" :clients="clients"
                               :existing_id="editing" @close="close_edit" />
         <div v-else-if="feature_requests && !feature_requests.length" class="placeholder">
             No Entries.
@@ -19,7 +25,7 @@
         </div>
         <div v-else class="placeholder">Loading&hellip;</div>
         <transition name="fade">
-            <div v-if="!edit_mode" class="add" @click="add">+</div>
+            <div v-if="!edit_mode && !settings" class="add" @click="add">+</div>
         </transition>
     </div>
 </div>

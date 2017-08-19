@@ -1,0 +1,20 @@
+<div class="inner settings">
+    <div class="clients">
+        <div class="title">Edit Clients</div>
+        <draggable class="clientList" @change="move" 
+                   v-model="clients" :options="{ handle: '.handle' }">
+            <div class="client" v-for="(client, i) in clients"
+                 :style="{ backgroundColor: colorHash(client.name) }">
+                <div class="handle">
+                    <svgimg url="entypo/align-vertical-middle.svg" />
+                </div>
+                <div class="priority">{{ client.priority }}</div>
+                <input class="name" type="text" v-model="client.name" />
+            </div>
+        </draggable>
+    </div>
+    <div class="footer">
+        <button @click="cancel">Cancel</button>
+        <button @click="save">Save</button>
+    </div>
+</div>

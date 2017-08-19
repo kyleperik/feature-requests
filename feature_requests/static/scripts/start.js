@@ -4,7 +4,8 @@ vue_utils.push_component('app', {
             feature_requests: null,
             clients: null,
             edit_mode: false,
-            editing: null
+            editing: null,
+            settings: false
         }
     },
     methods: {
