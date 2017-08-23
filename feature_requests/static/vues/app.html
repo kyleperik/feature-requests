@@ -16,7 +16,7 @@
         <div v-else-if="feature_requests && !feature_requests.length" class="placeholder">
             No Entries.
         </div>
-        <div class="inner" v-else-if="feature_requests">
+        <div class="inner" v-else-if="feature_requests && clients">
             <feature_request :key="feature_request.id"
                              v-for="feature_request in feature_requests"
                              :feature_request="feature_request"

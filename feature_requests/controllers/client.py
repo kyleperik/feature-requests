@@ -20,5 +20,6 @@ def POST():
             id = client['id'],
             name = client['name'],
             priority = client['priority'],
+            is_archived = client['is_archived'],
         ) for client in f
     ]))

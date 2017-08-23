@@ -35,16 +35,19 @@ class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(500))
     priority = db.Column(db.Integer)
+    is_archived = db.Column(db.Boolean)
 
-    def __init__(self, id=None, name='', priority=None):
+    def __init__(self, id=None, name='', priority=None, is_archived=None):
         self.id = id
         self.name = name
         self.priority = priority
+        self.is_archived = is_archived
 
     @classmethod
     def create(cls, client):
         return cls(
             id = client.id,
             name = client.name,
-            priority = client.priority
+            priority = client.priority,
+            is_archived = client.is_archived
         )

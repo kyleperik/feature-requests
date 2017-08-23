@@ -28,22 +28,25 @@ class FeatureRequest:
         }
 
 class Client:
-    def __init__(self, id=None, name='', priority=None):
+    def __init__(self, id=None, name='', priority=None, is_archived=None):
         self.id = id
         self.name = name
         self.priority = priority
+        self.is_archived = is_archived
 
     @classmethod
     def create(cls, client):
         return cls(
             id = client.id,
             name = client.name,
-            priority = client.priority
+            priority = client.priority,
+            is_archived = client.is_archived,
         )
 
     def serialize(self):
         return {
             'id': self.id,
             'name': self.name,
-            'priority': self.priority
+            'priority': self.priority,
+            'is_archived': self.is_archived,
         }

@@ -12,8 +12,10 @@
             <label>Client</label>
             <select v-model="client_id">
                 <option value="" disabled>Select a client</option>
-                <option v-for="client in clients" :value="client.id">
-                    {{ client.priority }}. {{ client.name }}
+                <option v-for="client in clients" :value="client.id"
+                        :class="{ archived: client.is_archived }">
+                    <template v-if="!client.is_archived">{{ client.priority }}.</template>
+                    {{ client.name }}
                 </option>
             </select>
         </div>

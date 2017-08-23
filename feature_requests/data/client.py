@@ -13,6 +13,7 @@ def update(updated_client):
               .filter(Client.id == updated_client.id)).first()
     client.name = updated_client.name
     client.priority = updated_client.priority
+    client.is_archived = updated_client.is_archived
     db.session.commit()
 
 def add(new_client):

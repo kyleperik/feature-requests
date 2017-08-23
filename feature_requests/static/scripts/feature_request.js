@@ -42,7 +42,7 @@ vue_utils.push_component('feature_request', {
             return this.moment_target_date.diff(moment(), 'days') < 10;
         },
         client_color: function () {
-            return colorHash.hex(this.client);
+            return this.client.is_archived ? 'grey' : colorHash.hex(this.client.name);
         }
     }
 });

@@ -6,6 +6,7 @@ def get_all():
     features = (
         db.session.query(FeatureRequest).join(FeatureRequest.client)
         .order_by(
+            Client.is_archived,
             Client.priority,
             FeatureRequest.target_date,
         )

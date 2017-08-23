@@ -3,6 +3,11 @@ body {
     margin: 0;
 }
 
+svg {
+    width: 20px;
+    height: 20px;
+}
+
 button {
     border: none;
     background-color: #FF5722;
@@ -138,6 +143,10 @@ button:active {
 
 .feature-request > * {
     margin: 3px 10px;
+}
+
+.feature-request .description {
+    white-space: pre-wrap;
 }
 
 /* Show dashed line before each feature request except the first */
@@ -282,6 +291,11 @@ button:active {
     border-left: 1px dashed #e4e4e4;
 }
 
+.edit .client select option.archived {
+    color: #3c3c3c;
+    font-style: italic;
+}
+
 .edit textarea {
     resize: none;
 }
@@ -309,6 +323,10 @@ button:active {
     align-items: flex-start;
 }
 
+.inner.settings button.add {
+
+}
+
 .inner.settings .client {
     margin: 3px;
     display: flex;
@@ -329,6 +347,21 @@ button:active {
     width: 16px;
     height: 16px;
     fill: white;
+}
+
+.inner.settings .client .delete,
+.inner.settings .client .unarchive {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.inner.settings .client .delete svg,
+.inner.settings .client .unarchive svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+    margin-left: 4px;
 }
 
 .inner.settings .client .priority {
@@ -352,5 +385,6 @@ button:active {
 .inner.settings .footer {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    padding: 10px;
+    border-top: 1px solid #b9b9b9;
 }

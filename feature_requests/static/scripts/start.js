@@ -13,8 +13,7 @@ vue_utils.push_component('app', {
             if (!this.clients) {
                 return;
             }
-            var client = this.clients.filter(c => c.id === id)[0];
-            return client ? client.name : null;
+            return this.clients.filter(c => c.id === id)[0];
         },
         add: function () {
             this.edit_mode = true;
@@ -51,7 +50,10 @@ vue_utils.push_component('app', {
     }
 });
 
-var colorHash = new ColorHash({saturation: 0.5, lightness: 0.6});
+var colorHash = new ColorHash({
+    saturation: [ 0.6, 0.8, 1.0 ],
+    lightness: [ 0.4, 0.45, 0.5 ]
+});
 
 function start() {
     Vue.component('flat-pickr', VueFlatpickr.default);
