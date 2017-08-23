@@ -2,7 +2,11 @@ window.vue_utils.push_component('settings', {
     props: ['initialClients'],
     data: function () {
         return {
-            clients: this.initialClients
+            clients: this.initialClients.map(c => ({ 
+                id: c.id,
+                name: c.name,
+                priority: c.priority
+            }))
         }
     },
     methods: {
@@ -12,7 +16,15 @@ window.vue_utils.push_component('settings', {
             });
         },
         save: function () {
-            this.$emit('close');
+            fetch($SCRIPT_ROOT + '/client/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(this.clients)
+            })
+            .then(r => r.json())
+            .then(r => {
+                this.$emit('close');
+            });
         },
         cancel: function () {
             this.$emit('close');

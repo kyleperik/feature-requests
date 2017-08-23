@@ -1,9 +1,15 @@
-from .models import FeatureRequest, db
+from .models import FeatureRequest, Client, db
 from feature_requests import domain
 import feature_requests.domain.models
 
 def get_all():
-    features = db.session.query(FeatureRequest).all()
+    features = (
+        db.session.query(FeatureRequest).join(FeatureRequest.client)
+        .order_by(
+            Client.priority,
+            FeatureRequest.target_date,
+        )
+    ).all()
     return [
         domain.models.FeatureRequest.create(feature)
     for feature in features]

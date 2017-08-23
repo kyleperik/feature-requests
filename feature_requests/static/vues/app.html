@@ -10,7 +10,7 @@
         </div>
     </div>
     <div id="Content">
-        <settings :initialClients="clients" @close="settings = false" v-if="settings" />
+        <settings :initialClients="clients" @close="close_settings" v-if="settings" />
         <edit_feature_request v-else-if="edit_mode" class="inner" :clients="clients"
                               :existing_id="editing" @close="close_edit" />
         <div v-else-if="feature_requests && !feature_requests.length" class="placeholder">

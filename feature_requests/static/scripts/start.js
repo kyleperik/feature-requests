@@ -23,6 +23,10 @@ vue_utils.push_component('app', {
             this.edit_mode = true;
             this.editing = editing;
         },
+        close_settings: function () {
+            this.settings = false;
+            this.load();
+        },
         close_edit: function () {
             this.edit_mode = false;
             this.editing = null;

@@ -37,7 +37,6 @@ def POST():
 @feature_request.route('/<int:id>', methods=['PATCH'])
 def PATCH(id):
     f = request.get_json()
-    #import pdb; pdb.set_trace()
     return jsonify(
         facades.feature_request.update(
             id,

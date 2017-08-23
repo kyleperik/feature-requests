@@ -11,6 +11,7 @@ class FeatureRequest(db.Model):
     target_date = db.Column(db.DateTime)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'))
 
+    client = db.relationship('Client')
     def __init__(self, id=None, title='', description='', target_date=None,
                  client_id=None):
         self.id = id
