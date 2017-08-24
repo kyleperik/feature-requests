@@ -50,7 +50,20 @@ vue_utils.push_component('app', {
     }
 });
 
+
+// Taken from string-hash from npm
+// ** https://www.npmjs.com/package/string-hash **
+var customHash = function(str) {
+    var hash = 5381;
+    var i = str.length;
+
+    while(i) {
+      hash = (hash * 33) ^ str.charCodeAt(--i);
+    }
+    return hash >>> 0;
+}
 var colorHash = new ColorHash({
+    hash: customHash,
     saturation: [ 0.6, 0.8, 1.0 ],
     lightness: [ 0.4, 0.45, 0.5 ]
 });
