@@ -29,7 +29,8 @@ def POST():
                 title = f['title'],
                 description = f['description'],
                 target_date = f['target_date'],
-                client_id = f['client_id']
+                client_id = f['client_id'],
+                product_area_id = f['product_area_id']
             )
         )
     )
@@ -44,7 +45,8 @@ def PATCH(id):
                 title = f['title'],
                 description = f['description'],
                 target_date = f['target_date'],
-                client_id = f['client_id']
+                client_id = f['client_id'],
+                product_area_id = f['product_area_id']
             )
         )
     )

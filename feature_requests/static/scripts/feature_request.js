@@ -1,5 +1,5 @@
 vue_utils.push_component('feature_request', {
-    props: ['feature_request', 'client'],
+    props: ['feature_request', 'client', 'product_area'],
     data: function () {
         return {
             show_options: false,

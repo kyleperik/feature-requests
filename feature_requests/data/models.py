@@ -10,24 +10,28 @@ class FeatureRequest(db.Model):
     description = db.Column(db.String(5000))
     target_date = db.Column(db.DateTime)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'))
-
+    product_area_id = db.Column(db.Integer, db.ForeignKey('product_area.id'))
+    
     client = db.relationship('Client')
+    product_area = db.relationship('ProductArea')
     def __init__(self, id=None, title='', description='', target_date=None,
-                 client_id=None):
+                 client_id=None, product_area_id=None):
         self.id = id
         self.title = title
         self.description = description
         self.target_date = target_date
         self.client_id = client_id
+        self.product_area_id = product_area_id
 
     @classmethod
-    def create(cls, feature):
+    def create(cls, entitiy):
         return cls(
-            id = feature.id,
-            title = feature.title,
-            description = feature.description,
-            target_date = feature.target_date,
-            client_id = feature.client_id
+            id = entitiy.id,
+            title = entitiy.title,
+            description = entitiy.description,
+            target_date = entitiy.target_date,
+            client_id = entitiy.client_id,
+            product_area_id = entitiy.product_area_id,
         )
 
 class Client(db.Model):

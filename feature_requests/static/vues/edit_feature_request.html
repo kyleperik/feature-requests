@@ -1,6 +1,15 @@
 <div class="edit">
     <div class="form">
         <input type="text" v-model="title" class="title" placeholder="What is the Feature?" />
+        <div class="product_area">
+            <label>Product Area</label>
+            <select v-model="product_area_id">
+                <option value="" disabled>Select a product area</option>
+                <option v-for="product_area in product_areas" :value="product_area.id">
+                    {{ product_area.name }}
+                </option>
+            </select>
+        </div>
         <textarea v-model="description" @input="textarea_change"
                   class="description" placeholder="Describe the Feature">
         </textarea>

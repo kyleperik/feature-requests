@@ -3,6 +3,7 @@ vue_utils.push_component('app', {
         return {
             feature_requests: null,
             clients: null,
+            product_areas: null,
             edit_mode: false,
             editing: null,
             settings: false
@@ -14,6 +15,12 @@ vue_utils.push_component('app', {
                 return;
             }
             return this.clients.filter(c => c.id === id)[0];
+        },
+        product_area: function (id) {
+            if (!this.product_areas) {
+                return;
+            }
+            return this.product_areas.filter(p => p.id === id)[0];
         },
         add: function () {
             this.edit_mode = true;
@@ -42,6 +49,12 @@ vue_utils.push_component('app', {
             .then(r => r.json())
             .then(r => {
                 this.clients = r;
+            });
+
+            fetch($SCRIPT_ROOT + 'product_area/')
+            .then(r => r.json())
+            .then(r => {
+                this.product_areas = r;
             });
         }
     },

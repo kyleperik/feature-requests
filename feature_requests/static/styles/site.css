@@ -160,7 +160,7 @@ button:active {
 
 .feature-request .titlerow {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
 }
 
@@ -176,11 +176,18 @@ button:active {
     padding: 2px;
 }
 
+.feature-request .product_area {
+    font-size: 13px;
+    padding: 2px 4px;
+    color: grey;
+}
+
 .feature-request .options {
     display: none;
     cursor: pointer;
     flex-direction: column;
     position: relative;
+    margin-left: auto;
 }
 
 .feature-request .options svg {
@@ -253,40 +260,47 @@ button:active {
 }
 
 .edit .target_date,
-.edit .client {
+.edit .client,
+.edit .product_area {
     display: flex;
     border-color: inherit;
 }
 
 .edit .title,
 .edit .description,
-.edit .target_date {
+.edit .target_date,
+.edit .product_area {
     border-bottom: 1px dashed #e4e4e4;
 }
 
 .edit .target_date input,
 .edit .target_date label,
 .edit .client select,
-.edit .client label {
+.edit .client label,
+.edit .product_area select,
+.edit .product_area label {
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: 0;
 }
 
 .edit .target_date label,
-.edit .client label {
+.edit .client label,
+.edit .product_area label {
     padding: 2px 10px;
     text-align: right;
 }
 
-.edit .client select {
+.edit .client select,
+.edit .product_area select {
     border: none;
     background-color: white;
     outline: none;
 }
 
 .edit .target_date input,
-.edit .client select {
+.edit .client select,
+.edit .product_area select {
     padding: 2px 10px;
     border-left: 1px dashed #e4e4e4;
 }

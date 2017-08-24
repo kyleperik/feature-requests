@@ -1,5 +1,5 @@
 vue_utils.push_component('edit_feature_request', {
-    props: ['existing_id', 'clients'],
+    props: ['existing_id', 'clients', 'product_areas'],
     beforeMount: function () {
         if (this.existing_id) {
             fetch($SCRIPT_ROOT + 'feature_request/' + this.existing_id)
@@ -9,6 +9,7 @@ vue_utils.push_component('edit_feature_request', {
                 this.description = r.description;
                 this.target_date = r.target_date;
                 this.client_id = r.client_id;
+                this.product_area_id = r.product_area_id;
                 Vue.nextTick(() => autosize(this.$el.querySelector('textarea')));
             });
         }
@@ -19,11 +20,12 @@ vue_utils.push_component('edit_feature_request', {
             description: '',
             target_date: moment().format('YYYY-MM-DD'),
             client_id: '',
+            product_area_id: '',
         };
     },
     computed: {
         isValid: function () {
-            return this.client_id;
+            return this.client_id && this.product_area_id;
         }
     },
     methods: {
@@ -47,7 +49,8 @@ vue_utils.push_component('edit_feature_request', {
                     title: this.title,
                     description: this.description,
                     target_date: this.target_date,
-                    client_id: this.client_id
+                    client_id: this.client_id,
+                    product_area_id: this.product_area_id,
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,7 +64,8 @@ vue_utils.push_component('edit_feature_request', {
                     title: this.title,
                     description: this.description,
                     target_date: this.target_date,
-                    client_id: this.client_id
+                    client_id: this.client_id,
+                    product_area_id: this.product_area_id,
                 }),
                 headers: {
                     'Content-Type': 'application/json'

@@ -38,6 +38,7 @@ def update(id, f):
     feature.description = f.description
     feature.target_date = f.target_date
     feature.client_id = f.client_id
+    feature.product_area_id = f.product_area_id
     return db.session.commit()
 
 def delete(id):

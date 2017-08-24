@@ -1,21 +1,23 @@
 class FeatureRequest:
     def __init__(self, id=None, title='',
                  description='', target_date=None,
-                 client_id=None):
+                 client_id=None, product_area_id=None):
         self.id = id
         self.title = title
         self.description = description
         self.target_date = target_date
         self.client_id = client_id
+        self.product_area_id = product_area_id
 
     @classmethod
-    def create(cls, feature_request):
+    def create(cls, entity):
         return cls(
-            id = feature_request.id,
-            title = feature_request.title,
-            description = feature_request.description,
-            target_date = feature_request.target_date,
-            client_id = feature_request.client_id
+            id = entity.id,
+            title = entity.title,
+            description = entity.description,
+            target_date = entity.target_date,
+            client_id = entity.client_id,
+            product_area_id = entity.product_area_id,
         )
 
     def serialize(self):
@@ -24,7 +26,8 @@ class FeatureRequest:
             'title': self.title,
             'description': self.description,
             'target_date': self.target_date,
-            'client_id': self.client_id
+            'client_id': self.client_id,
+            'product_area_id': self.product_area_id,
         }
 
 class Client:
@@ -35,12 +38,12 @@ class Client:
         self.is_archived = is_archived
 
     @classmethod
-    def create(cls, client):
+    def create(cls, entity):
         return cls(
-            id = client.id,
-            name = client.name,
-            priority = client.priority,
-            is_archived = client.is_archived,
+            id = entity.id,
+            name = entity.name,
+            priority = entity.priority,
+            is_archived = entity.is_archived,
         )
 
     def serialize(self):
@@ -57,10 +60,10 @@ class ProductArea:
         self.name = name
 
     @classmethod
-    def create(cls, entitiy):
+    def create(cls, entity):
         return cls(
-            id = entitiy.id,
-            name = entitiy.name,
+            id = entity.id,
+            name = entity.name,
         )
 
     def serialize(self):
