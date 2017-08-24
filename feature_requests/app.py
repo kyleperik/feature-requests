@@ -6,6 +6,7 @@ from feature_requests.data.models import db
 from feature_requests.controllers.home import home
 from feature_requests.controllers.feature_request import feature_request
 from feature_requests.controllers.client import client
+from feature_requests.controllers.product_area import product_area
 
 from flask import Flask
 
@@ -24,6 +25,7 @@ app.config.from_envvar('FEAT_REQS_SETTINGS')
 app.register_blueprint(home)
 app.register_blueprint(feature_request, url_prefix='/feature_request')
 app.register_blueprint(client, url_prefix='/client')
+app.register_blueprint(product_area, url_prefix='/product_area')
 
 # Pass through any config settings/global stuff for all templates
 @app.context_processor

@@ -50,3 +50,21 @@ class Client:
             'priority': self.priority,
             'is_archived': self.is_archived,
         }
+
+class ProductArea:
+    def __init__(self, id=None, name=''):
+        self.id = id
+        self.name = name
+
+    @classmethod
+    def create(cls, entitiy):
+        return cls(
+            id = entitiy.id,
+            name = entitiy.name,
+        )
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+        }

@@ -51,3 +51,19 @@ class Client(db.Model):
             priority = client.priority,
             is_archived = client.is_archived
         )
+
+class ProductArea(db.Model):
+    __tablename__ = 'product_area'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(500))
+
+    def __init__(self, id=None, name=''):
+        self.id = id
+        self.name = name
+
+    @classmethod
+    def create(cls, entitiy):
+        return cls(
+            id = entitiy.id,
+            name = entitiy.name
+        )
